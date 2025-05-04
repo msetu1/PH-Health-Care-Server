@@ -15,6 +15,41 @@ const getAllFromDB = async (req: Request, res: Response) => {
   });
 };
 
+const getSingAdminData = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await AdminService.getSingAdminData(id);
+
+  res.status(200).json({
+    success: true,
+    message: "Admin SIngle Data retrieved Successfully",
+    data: result,
+  });
+};
+
+const updateAdminDB = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await AdminService.updateAdminDB(id, req.body);
+  res.status(200).json({
+    success: true,
+    message: "Admin Data updated Successfully",
+    data: result,
+  });
+};
+
+const deleteAdminData = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await AdminService.deleteAdminData(id);
+
+  res.status(200).json({
+    success: true,
+    message: "Admin Data Deleted Successfully",
+    data: result,
+  });
+};
+
 export const AdminController = {
   getAllFromDB,
+  getSingAdminData,
+  updateAdminDB,
+  deleteAdminData,
 };
