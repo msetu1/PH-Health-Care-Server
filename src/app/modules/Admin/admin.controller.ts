@@ -38,12 +38,12 @@ const updateAdminDB = async (req: Request, res: Response) => {
 
 const deleteAdminData = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const result = await AdminService.deleteAdminData(id);
+  await AdminService.deleteAdminData(id);
 
   res.status(200).json({
     success: true,
     message: "Admin Data Deleted Successfully",
-    data: result,
+    data: {},
   });
 };
 
